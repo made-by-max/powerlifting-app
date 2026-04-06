@@ -51,9 +51,7 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Lifter: 'Lifter',
-  Meet: 'Meet',
-  MeetEntry: 'MeetEntry',
+  Session: 'Session',
   Attempt: 'Attempt'
 } as const
 
@@ -73,29 +71,8 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const LifterScalarFieldEnum = {
+export const SessionScalarFieldEnum = {
   id: 'id',
-  name: 'name'
-} as const
-
-export type LifterScalarFieldEnum = (typeof LifterScalarFieldEnum)[keyof typeof LifterScalarFieldEnum]
-
-
-export const MeetScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  meet_date: 'meet_date',
-  location: 'location',
-  federation: 'federation'
-} as const
-
-export type MeetScalarFieldEnum = (typeof MeetScalarFieldEnum)[keyof typeof MeetScalarFieldEnum]
-
-
-export const MeetEntryScalarFieldEnum = {
-  id: 'id',
-  lifterId: 'lifterId',
-  meetId: 'meetId',
   bodyweight: 'bodyweight',
   weight_class: 'weight_class',
   division: 'division',
@@ -110,12 +87,11 @@ export const MeetEntryScalarFieldEnum = {
   meet_entry: 'meet_entry'
 } as const
 
-export type MeetEntryScalarFieldEnum = (typeof MeetEntryScalarFieldEnum)[keyof typeof MeetEntryScalarFieldEnum]
+export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
 
 
 export const AttemptScalarFieldEnum = {
   id: 'id',
-  meetEntryId: 'meetEntryId',
   lift_type: 'lift_type',
   attempt_number: 'attempt_number',
   weight: 'weight',

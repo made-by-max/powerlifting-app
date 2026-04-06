@@ -384,9 +384,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  Lifter: 'Lifter',
-  Meet: 'Meet',
-  MeetEntry: 'MeetEntry',
+  Session: 'Session',
   Attempt: 'Attempt'
 } as const
 
@@ -403,229 +401,81 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "lifter" | "meet" | "meetEntry" | "attempt"
+    modelProps: "session" | "attempt"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
-    Lifter: {
-      payload: Prisma.$LifterPayload<ExtArgs>
-      fields: Prisma.LifterFieldRefs
+    Session: {
+      payload: Prisma.$SessionPayload<ExtArgs>
+      fields: Prisma.SessionFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.LifterFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LifterPayload> | null
+          args: Prisma.SessionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.LifterFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LifterPayload>
+          args: Prisma.SessionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload>
         }
         findFirst: {
-          args: Prisma.LifterFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LifterPayload> | null
+          args: Prisma.SessionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.LifterFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LifterPayload>
+          args: Prisma.SessionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload>
         }
         findMany: {
-          args: Prisma.LifterFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LifterPayload>[]
+          args: Prisma.SessionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload>[]
         }
         create: {
-          args: Prisma.LifterCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LifterPayload>
+          args: Prisma.SessionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload>
         }
         createMany: {
-          args: Prisma.LifterCreateManyArgs<ExtArgs>
+          args: Prisma.SessionCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.LifterCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LifterPayload>[]
+          args: Prisma.SessionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload>[]
         }
         delete: {
-          args: Prisma.LifterDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LifterPayload>
+          args: Prisma.SessionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload>
         }
         update: {
-          args: Prisma.LifterUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LifterPayload>
+          args: Prisma.SessionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload>
         }
         deleteMany: {
-          args: Prisma.LifterDeleteManyArgs<ExtArgs>
+          args: Prisma.SessionDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.LifterUpdateManyArgs<ExtArgs>
+          args: Prisma.SessionUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.LifterUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LifterPayload>[]
+          args: Prisma.SessionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload>[]
         }
         upsert: {
-          args: Prisma.LifterUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$LifterPayload>
+          args: Prisma.SessionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SessionPayload>
         }
         aggregate: {
-          args: Prisma.LifterAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateLifter>
+          args: Prisma.SessionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSession>
         }
         groupBy: {
-          args: Prisma.LifterGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.LifterGroupByOutputType>[]
+          args: Prisma.SessionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SessionGroupByOutputType>[]
         }
         count: {
-          args: Prisma.LifterCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.LifterCountAggregateOutputType> | number
-        }
-      }
-    }
-    Meet: {
-      payload: Prisma.$MeetPayload<ExtArgs>
-      fields: Prisma.MeetFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.MeetFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.MeetFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetPayload>
-        }
-        findFirst: {
-          args: Prisma.MeetFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.MeetFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetPayload>
-        }
-        findMany: {
-          args: Prisma.MeetFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetPayload>[]
-        }
-        create: {
-          args: Prisma.MeetCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetPayload>
-        }
-        createMany: {
-          args: Prisma.MeetCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.MeetCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetPayload>[]
-        }
-        delete: {
-          args: Prisma.MeetDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetPayload>
-        }
-        update: {
-          args: Prisma.MeetUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetPayload>
-        }
-        deleteMany: {
-          args: Prisma.MeetDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.MeetUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.MeetUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetPayload>[]
-        }
-        upsert: {
-          args: Prisma.MeetUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetPayload>
-        }
-        aggregate: {
-          args: Prisma.MeetAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateMeet>
-        }
-        groupBy: {
-          args: Prisma.MeetGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.MeetGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.MeetCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.MeetCountAggregateOutputType> | number
-        }
-      }
-    }
-    MeetEntry: {
-      payload: Prisma.$MeetEntryPayload<ExtArgs>
-      fields: Prisma.MeetEntryFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.MeetEntryFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetEntryPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.MeetEntryFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetEntryPayload>
-        }
-        findFirst: {
-          args: Prisma.MeetEntryFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetEntryPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.MeetEntryFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetEntryPayload>
-        }
-        findMany: {
-          args: Prisma.MeetEntryFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetEntryPayload>[]
-        }
-        create: {
-          args: Prisma.MeetEntryCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetEntryPayload>
-        }
-        createMany: {
-          args: Prisma.MeetEntryCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.MeetEntryCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetEntryPayload>[]
-        }
-        delete: {
-          args: Prisma.MeetEntryDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetEntryPayload>
-        }
-        update: {
-          args: Prisma.MeetEntryUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetEntryPayload>
-        }
-        deleteMany: {
-          args: Prisma.MeetEntryDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.MeetEntryUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.MeetEntryUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetEntryPayload>[]
-        }
-        upsert: {
-          args: Prisma.MeetEntryUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MeetEntryPayload>
-        }
-        aggregate: {
-          args: Prisma.MeetEntryAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateMeetEntry>
-        }
-        groupBy: {
-          args: Prisma.MeetEntryGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.MeetEntryGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.MeetEntryCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.MeetEntryCountAggregateOutputType> | number
+          args: Prisma.SessionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SessionCountAggregateOutputType> | number
         }
       }
     }
@@ -742,29 +592,8 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const LifterScalarFieldEnum = {
+export const SessionScalarFieldEnum = {
   id: 'id',
-  name: 'name'
-} as const
-
-export type LifterScalarFieldEnum = (typeof LifterScalarFieldEnum)[keyof typeof LifterScalarFieldEnum]
-
-
-export const MeetScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  meet_date: 'meet_date',
-  location: 'location',
-  federation: 'federation'
-} as const
-
-export type MeetScalarFieldEnum = (typeof MeetScalarFieldEnum)[keyof typeof MeetScalarFieldEnum]
-
-
-export const MeetEntryScalarFieldEnum = {
-  id: 'id',
-  lifterId: 'lifterId',
-  meetId: 'meetId',
   bodyweight: 'bodyweight',
   weight_class: 'weight_class',
   division: 'division',
@@ -779,12 +608,11 @@ export const MeetEntryScalarFieldEnum = {
   meet_entry: 'meet_entry'
 } as const
 
-export type MeetEntryScalarFieldEnum = (typeof MeetEntryScalarFieldEnum)[keyof typeof MeetEntryScalarFieldEnum]
+export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
 
 
 export const AttemptScalarFieldEnum = {
   id: 'id',
-  meetEntryId: 'meetEntryId',
   lift_type: 'lift_type',
   attempt_number: 'attempt_number',
   weight: 'weight',
@@ -854,20 +682,6 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'String[]'
  */
 export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
-    
-
-
-/**
- * Reference to a field of type 'DateTime'
- */
-export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-/**
- * Reference to a field of type 'DateTime[]'
- */
-export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -986,9 +800,7 @@ export type PrismaClientOptions = ({
   comments?: runtime.SqlCommenterPlugin[]
 }
 export type GlobalOmitConfig = {
-  lifter?: Prisma.LifterOmit
-  meet?: Prisma.MeetOmit
-  meetEntry?: Prisma.MeetEntryOmit
+  session?: Prisma.SessionOmit
   attempt?: Prisma.AttemptOmit
 }
 

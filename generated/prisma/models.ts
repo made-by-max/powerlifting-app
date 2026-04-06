@@ -8,8 +8,6 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/Lifter'
-export type * from './models/Meet'
-export type * from './models/MeetEntry'
+export type * from './models/Session'
 export type * from './models/Attempt'
 export type * from './commonInputTypes'

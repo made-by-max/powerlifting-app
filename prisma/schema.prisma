@@ -12,27 +12,44 @@ datasource db {
   provider = "postgresql"
 }
 
-model Lifter {
-  id          Int         @id @default(autoincrement())
-  name        String
-  meetEntries MeetEntry[]
-}
+// model Lifter {
+//   id          Int         @id @default(autoincrement())
+//   name        String
+//   meetEntries MeetEntry[]
+// }
 
-model Meet {
-  id          Int         @id @default(autoincrement())
-  name        String?
-  meet_date   DateTime?
-  location    String?
-  federation  String?
-  meetEntries MeetEntry[]
-}
+// model Meet {
+//   id          Int         @id @default(autoincrement())
+//   name        String?
+//   meet_date   DateTime?
+//   location    String?
+//   federation  String?
+//   meetEntries MeetEntry[]
+// }
 
-model MeetEntry {
-  id           Int       @id @default(autoincrement())
-  lifter       Lifter    @relation(fields: [lifterId], references: [id])
-  lifterId     Int
-  meet         Meet      @relation(fields: [meetId], references: [id])
-  meetId       Int
+// model MeetEntry {
+//   id           Int       @id @default(autoincrement())
+//   lifter       Lifter    @relation(fields: [lifterId], references: [id])
+//   lifterId     Int
+//   meet         Meet      @relation(fields: [meetId], references: [id])
+//   meetId       Int
+//   bodyweight   Int?
+//   weight_class String?
+//   division     String?
+//   coefficient  String?
+//   bestSquat    Int
+//   bestBench    Int
+//   bestDeadlift Int
+//   total        Int
+//   wilks_score  Int?
+//   dots_score   Int?
+//   placement    Int?
+//   meet_entry   Int
+//   attempts     Attempt[]
+// }
+
+model Session {
+  id           Int     @id @default(autoincrement())
   bodyweight   Int?
   weight_class String?
   division     String?
@@ -45,20 +62,20 @@ model MeetEntry {
   dots_score   Int?
   placement    Int?
   meet_entry   Int
-  attempts     Attempt[]
+  // attempt      Attempt[]
 }
 
 model Attempt {
-  id             Int       @id @default(autoincrement())
-  meet_entry     MeetEntry @relation(fields: [meetEntryId], references: [id])
-  meetEntryId    Int
+  id             Int     @id @default(autoincrement())
+  // session        Session @relation(fields: [sessionId], references: [id])
+  // sessionId      Int
   lift_type      String
   attempt_number Int
   weight         Int
-  left_judge     Boolean   @default(false)
-  center_judge   Boolean   @default(false)
-  right_judge    Boolean   @default(false)
-  result         Boolean   @default(false)
-  platform_pr    Boolean   @default(false)
-  all_time_pr    Boolean   @default(false)
+  left_judge     Boolean @default(false)
+  center_judge   Boolean @default(false)
+  right_judge    Boolean @default(false)
+  result         Boolean @default(false)
+  platform_pr    Boolean @default(false)
+  all_time_pr    Boolean @default(false)
 }

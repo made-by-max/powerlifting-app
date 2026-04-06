@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { createUser } from "@/app/actions/CreateUser";
+import { addAttempt } from "@/app/actions/AddAttempt";
 // import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useActionState } from "react";
@@ -41,25 +41,8 @@ import { Label } from "@/components/ui/label";
 import { Toggle } from "@/components/ui/toggle";
 import { DEFAULT_PRESET_CONFIG } from "shadcn/preset";
 
-const userFormSchema = z.object({
-  name: z
-    .string()
-    .min(2, "Must be at least 2 characters.")
-    .max(32, "Must be at most 32 characters."),
-  date_of_birth: z.date().optional(),
-});
-
-// async function submitForm(prevState, formData) {
-//   await new Promise((resolve) => setTimeout(resolve, 1500));
-//   const userName = formData.get("form-user-name");
-//   return {
-//     success: true,
-//     message: `Form submitted successfully! ${userName} ${birthDate} `,
-//   };
-// }
-
 export function AttemptEntry() {
-  const [state, formAction, isPending] = useActionState(createUser, {
+  const [state, formAction, isPending] = useActionState(addAttempt, {
     success: false,
     message: "",
   });
@@ -73,8 +56,8 @@ export function AttemptEntry() {
       <CardContent>
         <form action={formAction} id="new-attempt-form">
           <FieldGroup>
-            <FieldLabel htmlFor="form-attempt-lift">Lift</FieldLabel>
-            <Select>
+            <FieldLabel htmlFor="lift_type">Lift</FieldLabel>
+            <Select name="lift_type">
               <SelectTrigger className="w-full max-w-48">
                 <SelectValue placeholder="" />
               </SelectTrigger>
@@ -85,42 +68,80 @@ export function AttemptEntry() {
               </SelectContent>
             </Select>
 
-            <FieldLabel htmlFor="form-attempt-number">
-              Attempt Number
-            </FieldLabel>
-            <Select>
+            <FieldLabel htmlFor="attempt_number">Attempt Number</FieldLabel>
+            <Input
+              id="attempt_number"
+              name="attempt_number"
+              type="number"
+              min={1}
+              max={3}
+              placeholder=""
+              required
+              autoComplete="off"
+            />
+
+            <FieldLabel htmlFor="weight">Weight</FieldLabel>
+            <Input
+              id="weight"
+              name="weight"
+              type="number"
+              placeholder=""
+              required
+              autoComplete="off"
+            />
+
+            <FieldLabel htmlFor="left_judge">Left Judge</FieldLabel>
+            <Select name="left_judge">
               <SelectTrigger className="w-full max-w-48">
                 <SelectValue placeholder="" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="1">1</SelectItem>
-                <SelectItem value="2">2</SelectItem>
-                <SelectItem value="3">3</SelectItem>
+                <SelectItem value="false">Red</SelectItem>
+                <SelectItem value="true">White</SelectItem>
               </SelectContent>
             </Select>
 
-            <FieldLabel htmlFor="form-attempt-results">Results</FieldLabel>
+            <FieldLabel htmlFor="center_judge">Center Judge</FieldLabel>
+            <Select name="center_judge">
+              <SelectTrigger className="w-full max-w-48">
+                <SelectValue placeholder="" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="false">Red</SelectItem>
+                <SelectItem value="true">White</SelectItem>
+              </SelectContent>
+            </Select>
 
-            <div className="flex flex-wrap items-center gap-2">
-              <Toggle variant="outline" aria-label="left" size="lg">
-                Left
-              </Toggle>
-              <Toggle variant="outline" aria-label="center" size="lg">
-                Center
-              </Toggle>
-              <Toggle variant="outline" aria-label="right" size="lg">
-                Right
-              </Toggle>
-            </div>
+            <FieldLabel htmlFor="right_judge">Right Judge</FieldLabel>
+            <Select name="right_judge">
+              <SelectTrigger className="w-full max-w-48">
+                <SelectValue placeholder="" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="false">Red</SelectItem>
+                <SelectItem value="true">White</SelectItem>
+              </SelectContent>
+            </Select>
+
+            <FieldLabel htmlFor="result">Result</FieldLabel>
+            <Select name="result">
+              <SelectTrigger className="w-full max-w-48">
+                <SelectValue placeholder="" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="false">Fail</SelectItem>
+                <SelectItem value="true">Pass</SelectItem>
+              </SelectContent>
+            </Select>
 
             <Field orientation="horizontal">
-              <Checkbox id="platformPR" name="platformPR" />
-              <FieldLabel htmlFor="platformPR">Platform PR</FieldLabel>
+              <Checkbox id="platform_pr" name="platform_pr" />
+              <FieldLabel htmlFor="platform_pr">Platform PR</FieldLabel>
             </Field>
 
             <Field orientation="horizontal">
-              <Checkbox id="ATPR" name="ATPR" />
-              <FieldLabel htmlFor="ATPR">All-time PR</FieldLabel>
+              <Checkbox id="all_time_pr" name="all_time_pr" />
+              <FieldLabel htmlFor="all_time_pr">All-time PR</FieldLabel>
             </Field>
           </FieldGroup>
         </form>
@@ -131,7 +152,7 @@ export function AttemptEntry() {
           <Button type="button" variant="outline">
             Reset
           </Button>
-          <Button type="submit" form="new-user-form" disabled={isPending}>
+          <Button type="submit" form="new-attempt-form" disabled={isPending}>
             {isPending ? "Submitting..." : "Submit"}
           </Button>
           {state.message && (

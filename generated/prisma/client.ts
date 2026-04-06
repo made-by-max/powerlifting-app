@@ -31,8 +31,8 @@ export * from "./enums"
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more Lifters
- * const lifters = await prisma.lifter.findMany()
+ * // Fetch zero or more Sessions
+ * const sessions = await prisma.session.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -42,20 +42,10 @@ export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts exten
 export { Prisma }
 
 /**
- * Model Lifter
+ * Model Session
  * 
  */
-export type Lifter = Prisma.LifterModel
-/**
- * Model Meet
- * 
- */
-export type Meet = Prisma.MeetModel
-/**
- * Model MeetEntry
- * 
- */
-export type MeetEntry = Prisma.MeetEntryModel
+export type Session = Prisma.SessionModel
 /**
  * Model Attempt
  * 
