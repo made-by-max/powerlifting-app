@@ -19,12 +19,11 @@ model Lifter {
 }
 
 model Meet {
-  id         Int       @id @default(autoincrement())
-  name       String?
-  meet_date  DateTime?
-  location   String?
-  federation String?
-
+  id          Int         @id @default(autoincrement())
+  name        String?
+  meet_date   DateTime?
+  location    String?
+  federation  String?
   meetEntries MeetEntry[]
 }
 

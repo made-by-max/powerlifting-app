@@ -1,6 +1,5 @@
 "use server";
-
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/lib/prisma"; // Your Prisma instance
 
 export type CreateUserState = {
   success: boolean;
@@ -8,21 +7,10 @@ export type CreateUserState = {
 };
 
 export async function createUser(
-  _prevState: CreateUserState,
+  prevState: CreateUserState,
   formData: FormData,
-): Promise<CreateUserState> {
-  const raw = formData.get("form-user-name");
-  const name = typeof raw === "string" ? raw.trim() : "";
-
-  if (!name) {
-    return { success: false, message: "Please enter a name." };
-  }
-  if (name.length < 2 || name.length > 32) {
-    return {
-      success: false,
-      message: "Name must be between 2 and 32 characters.",
-    };
-  }
+) {
+  const name = formData.get("form-user-name") as string;
 
   try {
     const lifter = await prisma.lifter.create({ data: { name } });
