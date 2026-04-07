@@ -123,7 +123,7 @@ export function AttemptEntry() {
               </SelectContent>
             </Select>
 
-            <FieldLabel htmlFor="result">Result</FieldLabel>
+            {/*<FieldLabel htmlFor="result">Result</FieldLabel>
             <Select name="result">
               <SelectTrigger className="w-full max-w-48">
                 <SelectValue placeholder="" />
@@ -132,7 +132,7 @@ export function AttemptEntry() {
                 <SelectItem value="false">Fail</SelectItem>
                 <SelectItem value="true">Pass</SelectItem>
               </SelectContent>
-            </Select>
+            </Select>*/}
 
             <Field orientation="horizontal">
               <Checkbox id="platform_pr" name="platform_pr" />

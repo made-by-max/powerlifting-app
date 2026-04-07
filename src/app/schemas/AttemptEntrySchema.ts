@@ -13,7 +13,7 @@ export const AttemptEntrySchema = z.object({
   left_judge: z.stringbool(),
   center_judge: z.stringbool(),
   right_judge: z.stringbool(),
-  result: z.stringbool(),
+  // result: z.stringbool(),
   platform_pr: z.coerce.boolean(),
   all_time_pr: z.coerce.boolean(),
 });
@@ -28,7 +28,7 @@ export type AddAtemptState = {
     left_judge?: string[];
     center_judge?: string[];
     right_judge?: string[];
-    result?: string[];
+    // result?: string[];
     platform_pr?: string[];
     all_time_pr?: string[];
   };

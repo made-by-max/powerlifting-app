@@ -1,36 +1,12 @@
 "use server";
 import { Prisma } from "@generated/prisma/client";
 import { prisma } from "@/lib/prisma";
+import { LiftSuccessful } from "../utils/LiftSuccessful";
+
 import {
   AttemptEntrySchema,
   AddAtemptState,
 } from "@/app/schemas/AttemptEntrySchema";
-
-// export type AddAtemptState = {
-//   success: boolean;
-//   message: string;
-// };
-
-// function formStringOrNull(formData: FormData, key: string): string | null {
-//   const v = formData.get(key);
-//   if (typeof v !== "string") return null;
-//   const t = v.trim();
-//   return t === "" ? null : t;
-// }
-
-// function formIntOrNull(formData: FormData, key: string): number {
-//   const raw = formStringOrNull(formData, key);
-//   // if (raw === null) return null;
-//   const n = Number.parseInt(raw, 10);
-//   return Number.isNaN(n) ? null : n;
-// }
-
-// function formConvertBoolean(formData: FormData, key: string): boolean {
-//   const raw = formStringOrNull(formData, key);
-//   if (raw === null) return null;
-//   const bool = raw === "true";
-//   return bool === true ? true : false;
-// }
 
 export async function addAttempt(
   prevState: AddAtemptState,
@@ -43,7 +19,7 @@ export async function addAttempt(
     left_judge: formData.get("left_judge"),
     center_judge: formData.get("center_judge"),
     right_judge: formData.get("right_judge"),
-    result: formData.get("result"),
+    // result: calcResult,
     platform_pr: formData.get("platform_pr"),
     all_time_pr: formData.get("all_time_pr"),
   });
@@ -55,23 +31,44 @@ export async function addAttempt(
       message: "Validation failed.",
     };
   }
-  const attempt = await prisma.attempt.create({
-    data: parsed.data,
-  });
-  return { success: true, message: `Attempt created!` };
-}
 
-//   try {
-//     const attempt = validatedFields;
-//     return { message: `Attempt created!` };
-//   } catch (error) {
-//     console.error("meetEntry failed:", error);
-//     if (error instanceof Prisma.PrismaClientKnownRequestError) {
-//       console.error("[Prisma]", error.code, error.message, error.meta);
-//     }
-//     const detail = error instanceof Error ? error.message : String(error);
-//     return {
-//       message: `Database error: ${detail}`,
-//     };
-//   }
-//
+  // LiftSuccessful(parsed.data.left, parsed.data.center_judge, parsed.data.right_judge)
+
+  // function calculateResult() {
+  //   if (!parsed.success) return;
+  //   let count = 0;
+
+  //   if (parsed.data.left_judge === true) {
+  //     count++;
+  //   }
+  //   if (parsed.data.center_judge === true) {
+  //     count++;
+  //   }
+  //   if (parsed.data.right_judge === true) {
+  //     count++;
+  //   }
+  //   return count >= 2;
+  // }
+
+  const attempt = await prisma.attempt.create({
+    data: {
+      lift_type: parsed.data.lift_type,
+      attempt_number: parsed.data.attempt_number,
+      weight: parsed.data.weight,
+      left_judge: parsed.data.left_judge,
+      center_judge: parsed.data.center_judge,
+      right_judge: parsed.data.right_judge,
+      result: LiftSuccessful(
+        parsed.data.left_judge,
+        parsed.data.center_judge,
+        parsed.data.right_judge,
+      ),
+      platform_pr: parsed.data.platform_pr,
+      all_time_pr: parsed.data.all_time_pr,
+    },
+  });
+  return {
+    success: true,
+    message: `Attempt created! Lift successful: ${attempt.result}`,
+  };
+}
