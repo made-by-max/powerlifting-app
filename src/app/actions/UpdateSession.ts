@@ -22,7 +22,7 @@ export async function UpdateSession(
   }
   const session = await prisma.session.update({
     where: {
-      id: 1,
+      id: sessionId,
     },
     data: {
       bodyweight: parsed.data.bodyweight,

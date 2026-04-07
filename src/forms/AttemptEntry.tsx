@@ -3,6 +3,7 @@ import * as React from "react";
 import { addAttempt } from "@/app/actions/AddAttempt";
 // import { zodResolver } from "@hookform/resolvers/zod";
 import { useActionState, useState } from "react";
+import { CalculateTotals } from "@/app/actions/CalculateTotals";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -212,7 +213,9 @@ export function AttemptEntry({ sessionId }: AttemptEntryProps) {
               {isPending ? "Submitting..." : "Submit"}
             </Button>
           ) : (
-            <Button>Next</Button>
+            <Button onClick={() => CalculateTotals(Number(sessionId))}>
+              Finish
+            </Button>
           )}
 
           {state.message && (
