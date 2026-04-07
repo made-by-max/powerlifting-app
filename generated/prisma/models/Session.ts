@@ -35,8 +35,6 @@ export type SessionAvgAggregateOutputType = {
   total: number | null
   wilks_score: number | null
   dots_score: number | null
-  placement: number | null
-  meet_entry: number | null
 }
 
 export type SessionSumAggregateOutputType = {
@@ -48,15 +46,11 @@ export type SessionSumAggregateOutputType = {
   total: number | null
   wilks_score: number | null
   dots_score: number | null
-  placement: number | null
-  meet_entry: number | null
 }
 
 export type SessionMinAggregateOutputType = {
   id: number | null
   bodyweight: number | null
-  weight_class: string | null
-  division: string | null
   coefficient: string | null
   bestSquat: number | null
   bestBench: number | null
@@ -64,15 +58,11 @@ export type SessionMinAggregateOutputType = {
   total: number | null
   wilks_score: number | null
   dots_score: number | null
-  placement: number | null
-  meet_entry: number | null
 }
 
 export type SessionMaxAggregateOutputType = {
   id: number | null
   bodyweight: number | null
-  weight_class: string | null
-  division: string | null
   coefficient: string | null
   bestSquat: number | null
   bestBench: number | null
@@ -80,15 +70,11 @@ export type SessionMaxAggregateOutputType = {
   total: number | null
   wilks_score: number | null
   dots_score: number | null
-  placement: number | null
-  meet_entry: number | null
 }
 
 export type SessionCountAggregateOutputType = {
   id: number
   bodyweight: number
-  weight_class: number
-  division: number
   coefficient: number
   bestSquat: number
   bestBench: number
@@ -96,8 +82,6 @@ export type SessionCountAggregateOutputType = {
   total: number
   wilks_score: number
   dots_score: number
-  placement: number
-  meet_entry: number
   _all: number
 }
 
@@ -111,8 +95,6 @@ export type SessionAvgAggregateInputType = {
   total?: true
   wilks_score?: true
   dots_score?: true
-  placement?: true
-  meet_entry?: true
 }
 
 export type SessionSumAggregateInputType = {
@@ -124,15 +106,11 @@ export type SessionSumAggregateInputType = {
   total?: true
   wilks_score?: true
   dots_score?: true
-  placement?: true
-  meet_entry?: true
 }
 
 export type SessionMinAggregateInputType = {
   id?: true
   bodyweight?: true
-  weight_class?: true
-  division?: true
   coefficient?: true
   bestSquat?: true
   bestBench?: true
@@ -140,15 +118,11 @@ export type SessionMinAggregateInputType = {
   total?: true
   wilks_score?: true
   dots_score?: true
-  placement?: true
-  meet_entry?: true
 }
 
 export type SessionMaxAggregateInputType = {
   id?: true
   bodyweight?: true
-  weight_class?: true
-  division?: true
   coefficient?: true
   bestSquat?: true
   bestBench?: true
@@ -156,15 +130,11 @@ export type SessionMaxAggregateInputType = {
   total?: true
   wilks_score?: true
   dots_score?: true
-  placement?: true
-  meet_entry?: true
 }
 
 export type SessionCountAggregateInputType = {
   id?: true
   bodyweight?: true
-  weight_class?: true
-  division?: true
   coefficient?: true
   bestSquat?: true
   bestBench?: true
@@ -172,8 +142,6 @@ export type SessionCountAggregateInputType = {
   total?: true
   wilks_score?: true
   dots_score?: true
-  placement?: true
-  meet_entry?: true
   _all?: true
 }
 
@@ -266,8 +234,6 @@ export type SessionGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 export type SessionGroupByOutputType = {
   id: number
   bodyweight: number | null
-  weight_class: string | null
-  division: string | null
   coefficient: string | null
   bestSquat: number
   bestBench: number
@@ -275,8 +241,6 @@ export type SessionGroupByOutputType = {
   total: number
   wilks_score: number | null
   dots_score: number | null
-  placement: number | null
-  meet_entry: number
   _count: SessionCountAggregateOutputType | null
   _avg: SessionAvgAggregateOutputType | null
   _sum: SessionSumAggregateOutputType | null
@@ -305,8 +269,6 @@ export type SessionWhereInput = {
   NOT?: Prisma.SessionWhereInput | Prisma.SessionWhereInput[]
   id?: Prisma.IntFilter<"Session"> | number
   bodyweight?: Prisma.IntNullableFilter<"Session"> | number | null
-  weight_class?: Prisma.StringNullableFilter<"Session"> | string | null
-  division?: Prisma.StringNullableFilter<"Session"> | string | null
   coefficient?: Prisma.StringNullableFilter<"Session"> | string | null
   bestSquat?: Prisma.IntFilter<"Session"> | number
   bestBench?: Prisma.IntFilter<"Session"> | number
@@ -314,15 +276,12 @@ export type SessionWhereInput = {
   total?: Prisma.IntFilter<"Session"> | number
   wilks_score?: Prisma.IntNullableFilter<"Session"> | number | null
   dots_score?: Prisma.IntNullableFilter<"Session"> | number | null
-  placement?: Prisma.IntNullableFilter<"Session"> | number | null
-  meet_entry?: Prisma.IntFilter<"Session"> | number
+  attempt?: Prisma.AttemptListRelationFilter
 }
 
 export type SessionOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   bodyweight?: Prisma.SortOrderInput | Prisma.SortOrder
-  weight_class?: Prisma.SortOrderInput | Prisma.SortOrder
-  division?: Prisma.SortOrderInput | Prisma.SortOrder
   coefficient?: Prisma.SortOrderInput | Prisma.SortOrder
   bestSquat?: Prisma.SortOrder
   bestBench?: Prisma.SortOrder
@@ -330,8 +289,7 @@ export type SessionOrderByWithRelationInput = {
   total?: Prisma.SortOrder
   wilks_score?: Prisma.SortOrderInput | Prisma.SortOrder
   dots_score?: Prisma.SortOrderInput | Prisma.SortOrder
-  placement?: Prisma.SortOrderInput | Prisma.SortOrder
-  meet_entry?: Prisma.SortOrder
+  attempt?: Prisma.AttemptOrderByRelationAggregateInput
 }
 
 export type SessionWhereUniqueInput = Prisma.AtLeast<{
@@ -340,8 +298,6 @@ export type SessionWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.SessionWhereInput[]
   NOT?: Prisma.SessionWhereInput | Prisma.SessionWhereInput[]
   bodyweight?: Prisma.IntNullableFilter<"Session"> | number | null
-  weight_class?: Prisma.StringNullableFilter<"Session"> | string | null
-  division?: Prisma.StringNullableFilter<"Session"> | string | null
   coefficient?: Prisma.StringNullableFilter<"Session"> | string | null
   bestSquat?: Prisma.IntFilter<"Session"> | number
   bestBench?: Prisma.IntFilter<"Session"> | number
@@ -349,15 +305,12 @@ export type SessionWhereUniqueInput = Prisma.AtLeast<{
   total?: Prisma.IntFilter<"Session"> | number
   wilks_score?: Prisma.IntNullableFilter<"Session"> | number | null
   dots_score?: Prisma.IntNullableFilter<"Session"> | number | null
-  placement?: Prisma.IntNullableFilter<"Session"> | number | null
-  meet_entry?: Prisma.IntFilter<"Session"> | number
+  attempt?: Prisma.AttemptListRelationFilter
 }, "id">
 
 export type SessionOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   bodyweight?: Prisma.SortOrderInput | Prisma.SortOrder
-  weight_class?: Prisma.SortOrderInput | Prisma.SortOrder
-  division?: Prisma.SortOrderInput | Prisma.SortOrder
   coefficient?: Prisma.SortOrderInput | Prisma.SortOrder
   bestSquat?: Prisma.SortOrder
   bestBench?: Prisma.SortOrder
@@ -365,8 +318,6 @@ export type SessionOrderByWithAggregationInput = {
   total?: Prisma.SortOrder
   wilks_score?: Prisma.SortOrderInput | Prisma.SortOrder
   dots_score?: Prisma.SortOrderInput | Prisma.SortOrder
-  placement?: Prisma.SortOrderInput | Prisma.SortOrder
-  meet_entry?: Prisma.SortOrder
   _count?: Prisma.SessionCountOrderByAggregateInput
   _avg?: Prisma.SessionAvgOrderByAggregateInput
   _max?: Prisma.SessionMaxOrderByAggregateInput
@@ -380,8 +331,6 @@ export type SessionScalarWhereWithAggregatesInput = {
   NOT?: Prisma.SessionScalarWhereWithAggregatesInput | Prisma.SessionScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Session"> | number
   bodyweight?: Prisma.IntNullableWithAggregatesFilter<"Session"> | number | null
-  weight_class?: Prisma.StringNullableWithAggregatesFilter<"Session"> | string | null
-  division?: Prisma.StringNullableWithAggregatesFilter<"Session"> | string | null
   coefficient?: Prisma.StringNullableWithAggregatesFilter<"Session"> | string | null
   bestSquat?: Prisma.IntWithAggregatesFilter<"Session"> | number
   bestBench?: Prisma.IntWithAggregatesFilter<"Session"> | number
@@ -389,45 +338,35 @@ export type SessionScalarWhereWithAggregatesInput = {
   total?: Prisma.IntWithAggregatesFilter<"Session"> | number
   wilks_score?: Prisma.IntNullableWithAggregatesFilter<"Session"> | number | null
   dots_score?: Prisma.IntNullableWithAggregatesFilter<"Session"> | number | null
-  placement?: Prisma.IntNullableWithAggregatesFilter<"Session"> | number | null
-  meet_entry?: Prisma.IntWithAggregatesFilter<"Session"> | number
 }
 
 export type SessionCreateInput = {
   bodyweight?: number | null
-  weight_class?: string | null
-  division?: string | null
   coefficient?: string | null
-  bestSquat: number
-  bestBench: number
-  bestDeadlift: number
-  total: number
+  bestSquat?: number
+  bestBench?: number
+  bestDeadlift?: number
+  total?: number
   wilks_score?: number | null
   dots_score?: number | null
-  placement?: number | null
-  meet_entry: number
+  attempt?: Prisma.AttemptCreateNestedManyWithoutSessionInput
 }
 
 export type SessionUncheckedCreateInput = {
   id?: number
   bodyweight?: number | null
-  weight_class?: string | null
-  division?: string | null
   coefficient?: string | null
-  bestSquat: number
-  bestBench: number
-  bestDeadlift: number
-  total: number
+  bestSquat?: number
+  bestBench?: number
+  bestDeadlift?: number
+  total?: number
   wilks_score?: number | null
   dots_score?: number | null
-  placement?: number | null
-  meet_entry: number
+  attempt?: Prisma.AttemptUncheckedCreateNestedManyWithoutSessionInput
 }
 
 export type SessionUpdateInput = {
   bodyweight?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  weight_class?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  division?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coefficient?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bestSquat?: Prisma.IntFieldUpdateOperationsInput | number
   bestBench?: Prisma.IntFieldUpdateOperationsInput | number
@@ -435,15 +374,12 @@ export type SessionUpdateInput = {
   total?: Prisma.IntFieldUpdateOperationsInput | number
   wilks_score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   dots_score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  placement?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  meet_entry?: Prisma.IntFieldUpdateOperationsInput | number
+  attempt?: Prisma.AttemptUpdateManyWithoutSessionNestedInput
 }
 
 export type SessionUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   bodyweight?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  weight_class?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  division?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coefficient?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bestSquat?: Prisma.IntFieldUpdateOperationsInput | number
   bestBench?: Prisma.IntFieldUpdateOperationsInput | number
@@ -451,30 +387,23 @@ export type SessionUncheckedUpdateInput = {
   total?: Prisma.IntFieldUpdateOperationsInput | number
   wilks_score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   dots_score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  placement?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  meet_entry?: Prisma.IntFieldUpdateOperationsInput | number
+  attempt?: Prisma.AttemptUncheckedUpdateManyWithoutSessionNestedInput
 }
 
 export type SessionCreateManyInput = {
   id?: number
   bodyweight?: number | null
-  weight_class?: string | null
-  division?: string | null
   coefficient?: string | null
-  bestSquat: number
-  bestBench: number
-  bestDeadlift: number
-  total: number
+  bestSquat?: number
+  bestBench?: number
+  bestDeadlift?: number
+  total?: number
   wilks_score?: number | null
   dots_score?: number | null
-  placement?: number | null
-  meet_entry: number
 }
 
 export type SessionUpdateManyMutationInput = {
   bodyweight?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  weight_class?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  division?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coefficient?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bestSquat?: Prisma.IntFieldUpdateOperationsInput | number
   bestBench?: Prisma.IntFieldUpdateOperationsInput | number
@@ -482,15 +411,11 @@ export type SessionUpdateManyMutationInput = {
   total?: Prisma.IntFieldUpdateOperationsInput | number
   wilks_score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   dots_score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  placement?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  meet_entry?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type SessionUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   bodyweight?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  weight_class?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  division?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   coefficient?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bestSquat?: Prisma.IntFieldUpdateOperationsInput | number
   bestBench?: Prisma.IntFieldUpdateOperationsInput | number
@@ -498,15 +423,11 @@ export type SessionUncheckedUpdateManyInput = {
   total?: Prisma.IntFieldUpdateOperationsInput | number
   wilks_score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   dots_score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  placement?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  meet_entry?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type SessionCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   bodyweight?: Prisma.SortOrder
-  weight_class?: Prisma.SortOrder
-  division?: Prisma.SortOrder
   coefficient?: Prisma.SortOrder
   bestSquat?: Prisma.SortOrder
   bestBench?: Prisma.SortOrder
@@ -514,8 +435,6 @@ export type SessionCountOrderByAggregateInput = {
   total?: Prisma.SortOrder
   wilks_score?: Prisma.SortOrder
   dots_score?: Prisma.SortOrder
-  placement?: Prisma.SortOrder
-  meet_entry?: Prisma.SortOrder
 }
 
 export type SessionAvgOrderByAggregateInput = {
@@ -527,15 +446,11 @@ export type SessionAvgOrderByAggregateInput = {
   total?: Prisma.SortOrder
   wilks_score?: Prisma.SortOrder
   dots_score?: Prisma.SortOrder
-  placement?: Prisma.SortOrder
-  meet_entry?: Prisma.SortOrder
 }
 
 export type SessionMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   bodyweight?: Prisma.SortOrder
-  weight_class?: Prisma.SortOrder
-  division?: Prisma.SortOrder
   coefficient?: Prisma.SortOrder
   bestSquat?: Prisma.SortOrder
   bestBench?: Prisma.SortOrder
@@ -543,15 +458,11 @@ export type SessionMaxOrderByAggregateInput = {
   total?: Prisma.SortOrder
   wilks_score?: Prisma.SortOrder
   dots_score?: Prisma.SortOrder
-  placement?: Prisma.SortOrder
-  meet_entry?: Prisma.SortOrder
 }
 
 export type SessionMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   bodyweight?: Prisma.SortOrder
-  weight_class?: Prisma.SortOrder
-  division?: Prisma.SortOrder
   coefficient?: Prisma.SortOrder
   bestSquat?: Prisma.SortOrder
   bestBench?: Prisma.SortOrder
@@ -559,8 +470,6 @@ export type SessionMinOrderByAggregateInput = {
   total?: Prisma.SortOrder
   wilks_score?: Prisma.SortOrder
   dots_score?: Prisma.SortOrder
-  placement?: Prisma.SortOrder
-  meet_entry?: Prisma.SortOrder
 }
 
 export type SessionSumOrderByAggregateInput = {
@@ -572,8 +481,11 @@ export type SessionSumOrderByAggregateInput = {
   total?: Prisma.SortOrder
   wilks_score?: Prisma.SortOrder
   dots_score?: Prisma.SortOrder
-  placement?: Prisma.SortOrder
-  meet_entry?: Prisma.SortOrder
+}
+
+export type SessionScalarRelationFilter = {
+  is?: Prisma.SessionWhereInput
+  isNot?: Prisma.SessionWhereInput
 }
 
 export type NullableIntFieldUpdateOperationsInput = {
@@ -596,13 +508,116 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type SessionCreateNestedOneWithoutAttemptInput = {
+  create?: Prisma.XOR<Prisma.SessionCreateWithoutAttemptInput, Prisma.SessionUncheckedCreateWithoutAttemptInput>
+  connectOrCreate?: Prisma.SessionCreateOrConnectWithoutAttemptInput
+  connect?: Prisma.SessionWhereUniqueInput
+}
+
+export type SessionUpdateOneRequiredWithoutAttemptNestedInput = {
+  create?: Prisma.XOR<Prisma.SessionCreateWithoutAttemptInput, Prisma.SessionUncheckedCreateWithoutAttemptInput>
+  connectOrCreate?: Prisma.SessionCreateOrConnectWithoutAttemptInput
+  upsert?: Prisma.SessionUpsertWithoutAttemptInput
+  connect?: Prisma.SessionWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SessionUpdateToOneWithWhereWithoutAttemptInput, Prisma.SessionUpdateWithoutAttemptInput>, Prisma.SessionUncheckedUpdateWithoutAttemptInput>
+}
+
+export type SessionCreateWithoutAttemptInput = {
+  bodyweight?: number | null
+  coefficient?: string | null
+  bestSquat?: number
+  bestBench?: number
+  bestDeadlift?: number
+  total?: number
+  wilks_score?: number | null
+  dots_score?: number | null
+}
+
+export type SessionUncheckedCreateWithoutAttemptInput = {
+  id?: number
+  bodyweight?: number | null
+  coefficient?: string | null
+  bestSquat?: number
+  bestBench?: number
+  bestDeadlift?: number
+  total?: number
+  wilks_score?: number | null
+  dots_score?: number | null
+}
+
+export type SessionCreateOrConnectWithoutAttemptInput = {
+  where: Prisma.SessionWhereUniqueInput
+  create: Prisma.XOR<Prisma.SessionCreateWithoutAttemptInput, Prisma.SessionUncheckedCreateWithoutAttemptInput>
+}
+
+export type SessionUpsertWithoutAttemptInput = {
+  update: Prisma.XOR<Prisma.SessionUpdateWithoutAttemptInput, Prisma.SessionUncheckedUpdateWithoutAttemptInput>
+  create: Prisma.XOR<Prisma.SessionCreateWithoutAttemptInput, Prisma.SessionUncheckedCreateWithoutAttemptInput>
+  where?: Prisma.SessionWhereInput
+}
+
+export type SessionUpdateToOneWithWhereWithoutAttemptInput = {
+  where?: Prisma.SessionWhereInput
+  data: Prisma.XOR<Prisma.SessionUpdateWithoutAttemptInput, Prisma.SessionUncheckedUpdateWithoutAttemptInput>
+}
+
+export type SessionUpdateWithoutAttemptInput = {
+  bodyweight?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  coefficient?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bestSquat?: Prisma.IntFieldUpdateOperationsInput | number
+  bestBench?: Prisma.IntFieldUpdateOperationsInput | number
+  bestDeadlift?: Prisma.IntFieldUpdateOperationsInput | number
+  total?: Prisma.IntFieldUpdateOperationsInput | number
+  wilks_score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  dots_score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+}
+
+export type SessionUncheckedUpdateWithoutAttemptInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  bodyweight?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  coefficient?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bestSquat?: Prisma.IntFieldUpdateOperationsInput | number
+  bestBench?: Prisma.IntFieldUpdateOperationsInput | number
+  bestDeadlift?: Prisma.IntFieldUpdateOperationsInput | number
+  total?: Prisma.IntFieldUpdateOperationsInput | number
+  wilks_score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  dots_score?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+}
+
+
+/**
+ * Count Type SessionCountOutputType
+ */
+
+export type SessionCountOutputType = {
+  attempt: number
+}
+
+export type SessionCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  attempt?: boolean | SessionCountOutputTypeCountAttemptArgs
+}
+
+/**
+ * SessionCountOutputType without action
+ */
+export type SessionCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SessionCountOutputType
+   */
+  select?: Prisma.SessionCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * SessionCountOutputType without action
+ */
+export type SessionCountOutputTypeCountAttemptArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AttemptWhereInput
+}
 
 
 export type SessionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   bodyweight?: boolean
-  weight_class?: boolean
-  division?: boolean
   coefficient?: boolean
   bestSquat?: boolean
   bestBench?: boolean
@@ -610,15 +625,13 @@ export type SessionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   total?: boolean
   wilks_score?: boolean
   dots_score?: boolean
-  placement?: boolean
-  meet_entry?: boolean
+  attempt?: boolean | Prisma.Session$attemptArgs<ExtArgs>
+  _count?: boolean | Prisma.SessionCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["session"]>
 
 export type SessionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   bodyweight?: boolean
-  weight_class?: boolean
-  division?: boolean
   coefficient?: boolean
   bestSquat?: boolean
   bestBench?: boolean
@@ -626,15 +639,11 @@ export type SessionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   total?: boolean
   wilks_score?: boolean
   dots_score?: boolean
-  placement?: boolean
-  meet_entry?: boolean
 }, ExtArgs["result"]["session"]>
 
 export type SessionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   bodyweight?: boolean
-  weight_class?: boolean
-  division?: boolean
   coefficient?: boolean
   bestSquat?: boolean
   bestBench?: boolean
@@ -642,15 +651,11 @@ export type SessionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   total?: boolean
   wilks_score?: boolean
   dots_score?: boolean
-  placement?: boolean
-  meet_entry?: boolean
 }, ExtArgs["result"]["session"]>
 
 export type SessionSelectScalar = {
   id?: boolean
   bodyweight?: boolean
-  weight_class?: boolean
-  division?: boolean
   coefficient?: boolean
   bestSquat?: boolean
   bestBench?: boolean
@@ -658,20 +663,24 @@ export type SessionSelectScalar = {
   total?: boolean
   wilks_score?: boolean
   dots_score?: boolean
-  placement?: boolean
-  meet_entry?: boolean
 }
 
-export type SessionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bodyweight" | "weight_class" | "division" | "coefficient" | "bestSquat" | "bestBench" | "bestDeadlift" | "total" | "wilks_score" | "dots_score" | "placement" | "meet_entry", ExtArgs["result"]["session"]>
+export type SessionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bodyweight" | "coefficient" | "bestSquat" | "bestBench" | "bestDeadlift" | "total" | "wilks_score" | "dots_score", ExtArgs["result"]["session"]>
+export type SessionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  attempt?: boolean | Prisma.Session$attemptArgs<ExtArgs>
+  _count?: boolean | Prisma.SessionCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type SessionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type SessionIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $SessionPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Session"
-  objects: {}
+  objects: {
+    attempt: Prisma.$AttemptPayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     bodyweight: number | null
-    weight_class: string | null
-    division: string | null
     coefficient: string | null
     bestSquat: number
     bestBench: number
@@ -679,8 +688,6 @@ export type $SessionPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     total: number
     wilks_score: number | null
     dots_score: number | null
-    placement: number | null
-    meet_entry: number
   }, ExtArgs["result"]["session"]>
   composites: {}
 }
@@ -1075,6 +1082,7 @@ readonly fields: SessionFieldRefs;
  */
 export interface Prisma__SessionClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  attempt<T extends Prisma.Session$attemptArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Session$attemptArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AttemptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1106,8 +1114,6 @@ export interface Prisma__SessionClient<T, Null = never, ExtArgs extends runtime.
 export interface SessionFieldRefs {
   readonly id: Prisma.FieldRef<"Session", 'Int'>
   readonly bodyweight: Prisma.FieldRef<"Session", 'Int'>
-  readonly weight_class: Prisma.FieldRef<"Session", 'String'>
-  readonly division: Prisma.FieldRef<"Session", 'String'>
   readonly coefficient: Prisma.FieldRef<"Session", 'String'>
   readonly bestSquat: Prisma.FieldRef<"Session", 'Int'>
   readonly bestBench: Prisma.FieldRef<"Session", 'Int'>
@@ -1115,8 +1121,6 @@ export interface SessionFieldRefs {
   readonly total: Prisma.FieldRef<"Session", 'Int'>
   readonly wilks_score: Prisma.FieldRef<"Session", 'Int'>
   readonly dots_score: Prisma.FieldRef<"Session", 'Int'>
-  readonly placement: Prisma.FieldRef<"Session", 'Int'>
-  readonly meet_entry: Prisma.FieldRef<"Session", 'Int'>
 }
     
 
@@ -1133,6 +1137,10 @@ export type SessionFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Omit specific fields from the Session
    */
   omit?: Prisma.SessionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SessionInclude<ExtArgs> | null
   /**
    * Filter, which Session to fetch.
    */
@@ -1152,6 +1160,10 @@ export type SessionFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extension
    */
   omit?: Prisma.SessionOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SessionInclude<ExtArgs> | null
+  /**
    * Filter, which Session to fetch.
    */
   where: Prisma.SessionWhereUniqueInput
@@ -1169,6 +1181,10 @@ export type SessionFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Omit specific fields from the Session
    */
   omit?: Prisma.SessionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SessionInclude<ExtArgs> | null
   /**
    * Filter, which Session to fetch.
    */
@@ -1218,6 +1234,10 @@ export type SessionFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions
    */
   omit?: Prisma.SessionOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SessionInclude<ExtArgs> | null
+  /**
    * Filter, which Session to fetch.
    */
   where?: Prisma.SessionWhereInput
@@ -1265,6 +1285,10 @@ export type SessionFindManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the Session
    */
   omit?: Prisma.SessionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SessionInclude<ExtArgs> | null
   /**
    * Filter, which Sessions to fetch.
    */
@@ -1314,9 +1338,13 @@ export type SessionCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    */
   omit?: Prisma.SessionOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SessionInclude<ExtArgs> | null
+  /**
    * The data needed to create a Session.
    */
-  data: Prisma.XOR<Prisma.SessionCreateInput, Prisma.SessionUncheckedCreateInput>
+  data?: Prisma.XOR<Prisma.SessionCreateInput, Prisma.SessionUncheckedCreateInput>
 }
 
 /**
@@ -1361,6 +1389,10 @@ export type SessionUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the Session
    */
   omit?: Prisma.SessionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SessionInclude<ExtArgs> | null
   /**
    * The data needed to update a Session.
    */
@@ -1428,6 +1460,10 @@ export type SessionUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    */
   omit?: Prisma.SessionOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SessionInclude<ExtArgs> | null
+  /**
    * The filter to search for the Session to update in case it exists.
    */
   where: Prisma.SessionWhereUniqueInput
@@ -1454,6 +1490,10 @@ export type SessionDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    */
   omit?: Prisma.SessionOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SessionInclude<ExtArgs> | null
+  /**
    * Filter which Session to delete.
    */
   where: Prisma.SessionWhereUniqueInput
@@ -1474,6 +1514,30 @@ export type SessionDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
+ * Session.attempt
+ */
+export type Session$attemptArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Attempt
+   */
+  select?: Prisma.AttemptSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Attempt
+   */
+  omit?: Prisma.AttemptOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AttemptInclude<ExtArgs> | null
+  where?: Prisma.AttemptWhereInput
+  orderBy?: Prisma.AttemptOrderByWithRelationInput | Prisma.AttemptOrderByWithRelationInput[]
+  cursor?: Prisma.AttemptWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AttemptScalarFieldEnum | Prisma.AttemptScalarFieldEnum[]
+}
+
+/**
  * Session without action
  */
 export type SessionDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1485,4 +1549,8 @@ export type SessionDefaultArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the Session
    */
   omit?: Prisma.SessionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SessionInclude<ExtArgs> | null
 }

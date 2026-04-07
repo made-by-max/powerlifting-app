@@ -28,18 +28,21 @@ export type AggregateAttempt = {
 
 export type AttemptAvgAggregateOutputType = {
   id: number | null
+  sessionId: number | null
   attempt_number: number | null
   weight: number | null
 }
 
 export type AttemptSumAggregateOutputType = {
   id: number | null
+  sessionId: number | null
   attempt_number: number | null
   weight: number | null
 }
 
 export type AttemptMinAggregateOutputType = {
   id: number | null
+  sessionId: number | null
   lift_type: string | null
   attempt_number: number | null
   weight: number | null
@@ -53,6 +56,7 @@ export type AttemptMinAggregateOutputType = {
 
 export type AttemptMaxAggregateOutputType = {
   id: number | null
+  sessionId: number | null
   lift_type: string | null
   attempt_number: number | null
   weight: number | null
@@ -66,6 +70,7 @@ export type AttemptMaxAggregateOutputType = {
 
 export type AttemptCountAggregateOutputType = {
   id: number
+  sessionId: number
   lift_type: number
   attempt_number: number
   weight: number
@@ -81,18 +86,21 @@ export type AttemptCountAggregateOutputType = {
 
 export type AttemptAvgAggregateInputType = {
   id?: true
+  sessionId?: true
   attempt_number?: true
   weight?: true
 }
 
 export type AttemptSumAggregateInputType = {
   id?: true
+  sessionId?: true
   attempt_number?: true
   weight?: true
 }
 
 export type AttemptMinAggregateInputType = {
   id?: true
+  sessionId?: true
   lift_type?: true
   attempt_number?: true
   weight?: true
@@ -106,6 +114,7 @@ export type AttemptMinAggregateInputType = {
 
 export type AttemptMaxAggregateInputType = {
   id?: true
+  sessionId?: true
   lift_type?: true
   attempt_number?: true
   weight?: true
@@ -119,6 +128,7 @@ export type AttemptMaxAggregateInputType = {
 
 export type AttemptCountAggregateInputType = {
   id?: true
+  sessionId?: true
   lift_type?: true
   attempt_number?: true
   weight?: true
@@ -219,6 +229,7 @@ export type AttemptGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 
 export type AttemptGroupByOutputType = {
   id: number
+  sessionId: number
   lift_type: string
   attempt_number: number
   weight: number
@@ -255,6 +266,7 @@ export type AttemptWhereInput = {
   OR?: Prisma.AttemptWhereInput[]
   NOT?: Prisma.AttemptWhereInput | Prisma.AttemptWhereInput[]
   id?: Prisma.IntFilter<"Attempt"> | number
+  sessionId?: Prisma.IntFilter<"Attempt"> | number
   lift_type?: Prisma.StringFilter<"Attempt"> | string
   attempt_number?: Prisma.IntFilter<"Attempt"> | number
   weight?: Prisma.IntFilter<"Attempt"> | number
@@ -264,10 +276,12 @@ export type AttemptWhereInput = {
   result?: Prisma.BoolFilter<"Attempt"> | boolean
   platform_pr?: Prisma.BoolFilter<"Attempt"> | boolean
   all_time_pr?: Prisma.BoolFilter<"Attempt"> | boolean
+  session?: Prisma.XOR<Prisma.SessionScalarRelationFilter, Prisma.SessionWhereInput>
 }
 
 export type AttemptOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  sessionId?: Prisma.SortOrder
   lift_type?: Prisma.SortOrder
   attempt_number?: Prisma.SortOrder
   weight?: Prisma.SortOrder
@@ -277,6 +291,7 @@ export type AttemptOrderByWithRelationInput = {
   result?: Prisma.SortOrder
   platform_pr?: Prisma.SortOrder
   all_time_pr?: Prisma.SortOrder
+  session?: Prisma.SessionOrderByWithRelationInput
 }
 
 export type AttemptWhereUniqueInput = Prisma.AtLeast<{
@@ -284,6 +299,7 @@ export type AttemptWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.AttemptWhereInput | Prisma.AttemptWhereInput[]
   OR?: Prisma.AttemptWhereInput[]
   NOT?: Prisma.AttemptWhereInput | Prisma.AttemptWhereInput[]
+  sessionId?: Prisma.IntFilter<"Attempt"> | number
   lift_type?: Prisma.StringFilter<"Attempt"> | string
   attempt_number?: Prisma.IntFilter<"Attempt"> | number
   weight?: Prisma.IntFilter<"Attempt"> | number
@@ -293,10 +309,12 @@ export type AttemptWhereUniqueInput = Prisma.AtLeast<{
   result?: Prisma.BoolFilter<"Attempt"> | boolean
   platform_pr?: Prisma.BoolFilter<"Attempt"> | boolean
   all_time_pr?: Prisma.BoolFilter<"Attempt"> | boolean
+  session?: Prisma.XOR<Prisma.SessionScalarRelationFilter, Prisma.SessionWhereInput>
 }, "id">
 
 export type AttemptOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  sessionId?: Prisma.SortOrder
   lift_type?: Prisma.SortOrder
   attempt_number?: Prisma.SortOrder
   weight?: Prisma.SortOrder
@@ -318,6 +336,7 @@ export type AttemptScalarWhereWithAggregatesInput = {
   OR?: Prisma.AttemptScalarWhereWithAggregatesInput[]
   NOT?: Prisma.AttemptScalarWhereWithAggregatesInput | Prisma.AttemptScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Attempt"> | number
+  sessionId?: Prisma.IntWithAggregatesFilter<"Attempt"> | number
   lift_type?: Prisma.StringWithAggregatesFilter<"Attempt"> | string
   attempt_number?: Prisma.IntWithAggregatesFilter<"Attempt"> | number
   weight?: Prisma.IntWithAggregatesFilter<"Attempt"> | number
@@ -339,10 +358,12 @@ export type AttemptCreateInput = {
   result?: boolean
   platform_pr?: boolean
   all_time_pr?: boolean
+  session: Prisma.SessionCreateNestedOneWithoutAttemptInput
 }
 
 export type AttemptUncheckedCreateInput = {
   id?: number
+  sessionId: number
   lift_type: string
   attempt_number: number
   weight: number
@@ -364,10 +385,12 @@ export type AttemptUpdateInput = {
   result?: Prisma.BoolFieldUpdateOperationsInput | boolean
   platform_pr?: Prisma.BoolFieldUpdateOperationsInput | boolean
   all_time_pr?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  session?: Prisma.SessionUpdateOneRequiredWithoutAttemptNestedInput
 }
 
 export type AttemptUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  sessionId?: Prisma.IntFieldUpdateOperationsInput | number
   lift_type?: Prisma.StringFieldUpdateOperationsInput | string
   attempt_number?: Prisma.IntFieldUpdateOperationsInput | number
   weight?: Prisma.IntFieldUpdateOperationsInput | number
@@ -381,6 +404,7 @@ export type AttemptUncheckedUpdateInput = {
 
 export type AttemptCreateManyInput = {
   id?: number
+  sessionId: number
   lift_type: string
   attempt_number: number
   weight: number
@@ -406,6 +430,7 @@ export type AttemptUpdateManyMutationInput = {
 
 export type AttemptUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  sessionId?: Prisma.IntFieldUpdateOperationsInput | number
   lift_type?: Prisma.StringFieldUpdateOperationsInput | string
   attempt_number?: Prisma.IntFieldUpdateOperationsInput | number
   weight?: Prisma.IntFieldUpdateOperationsInput | number
@@ -417,8 +442,19 @@ export type AttemptUncheckedUpdateManyInput = {
   all_time_pr?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
+export type AttemptListRelationFilter = {
+  every?: Prisma.AttemptWhereInput
+  some?: Prisma.AttemptWhereInput
+  none?: Prisma.AttemptWhereInput
+}
+
+export type AttemptOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
 export type AttemptCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  sessionId?: Prisma.SortOrder
   lift_type?: Prisma.SortOrder
   attempt_number?: Prisma.SortOrder
   weight?: Prisma.SortOrder
@@ -432,12 +468,14 @@ export type AttemptCountOrderByAggregateInput = {
 
 export type AttemptAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  sessionId?: Prisma.SortOrder
   attempt_number?: Prisma.SortOrder
   weight?: Prisma.SortOrder
 }
 
 export type AttemptMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  sessionId?: Prisma.SortOrder
   lift_type?: Prisma.SortOrder
   attempt_number?: Prisma.SortOrder
   weight?: Prisma.SortOrder
@@ -451,6 +489,7 @@ export type AttemptMaxOrderByAggregateInput = {
 
 export type AttemptMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  sessionId?: Prisma.SortOrder
   lift_type?: Prisma.SortOrder
   attempt_number?: Prisma.SortOrder
   weight?: Prisma.SortOrder
@@ -464,8 +503,51 @@ export type AttemptMinOrderByAggregateInput = {
 
 export type AttemptSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  sessionId?: Prisma.SortOrder
   attempt_number?: Prisma.SortOrder
   weight?: Prisma.SortOrder
+}
+
+export type AttemptCreateNestedManyWithoutSessionInput = {
+  create?: Prisma.XOR<Prisma.AttemptCreateWithoutSessionInput, Prisma.AttemptUncheckedCreateWithoutSessionInput> | Prisma.AttemptCreateWithoutSessionInput[] | Prisma.AttemptUncheckedCreateWithoutSessionInput[]
+  connectOrCreate?: Prisma.AttemptCreateOrConnectWithoutSessionInput | Prisma.AttemptCreateOrConnectWithoutSessionInput[]
+  createMany?: Prisma.AttemptCreateManySessionInputEnvelope
+  connect?: Prisma.AttemptWhereUniqueInput | Prisma.AttemptWhereUniqueInput[]
+}
+
+export type AttemptUncheckedCreateNestedManyWithoutSessionInput = {
+  create?: Prisma.XOR<Prisma.AttemptCreateWithoutSessionInput, Prisma.AttemptUncheckedCreateWithoutSessionInput> | Prisma.AttemptCreateWithoutSessionInput[] | Prisma.AttemptUncheckedCreateWithoutSessionInput[]
+  connectOrCreate?: Prisma.AttemptCreateOrConnectWithoutSessionInput | Prisma.AttemptCreateOrConnectWithoutSessionInput[]
+  createMany?: Prisma.AttemptCreateManySessionInputEnvelope
+  connect?: Prisma.AttemptWhereUniqueInput | Prisma.AttemptWhereUniqueInput[]
+}
+
+export type AttemptUpdateManyWithoutSessionNestedInput = {
+  create?: Prisma.XOR<Prisma.AttemptCreateWithoutSessionInput, Prisma.AttemptUncheckedCreateWithoutSessionInput> | Prisma.AttemptCreateWithoutSessionInput[] | Prisma.AttemptUncheckedCreateWithoutSessionInput[]
+  connectOrCreate?: Prisma.AttemptCreateOrConnectWithoutSessionInput | Prisma.AttemptCreateOrConnectWithoutSessionInput[]
+  upsert?: Prisma.AttemptUpsertWithWhereUniqueWithoutSessionInput | Prisma.AttemptUpsertWithWhereUniqueWithoutSessionInput[]
+  createMany?: Prisma.AttemptCreateManySessionInputEnvelope
+  set?: Prisma.AttemptWhereUniqueInput | Prisma.AttemptWhereUniqueInput[]
+  disconnect?: Prisma.AttemptWhereUniqueInput | Prisma.AttemptWhereUniqueInput[]
+  delete?: Prisma.AttemptWhereUniqueInput | Prisma.AttemptWhereUniqueInput[]
+  connect?: Prisma.AttemptWhereUniqueInput | Prisma.AttemptWhereUniqueInput[]
+  update?: Prisma.AttemptUpdateWithWhereUniqueWithoutSessionInput | Prisma.AttemptUpdateWithWhereUniqueWithoutSessionInput[]
+  updateMany?: Prisma.AttemptUpdateManyWithWhereWithoutSessionInput | Prisma.AttemptUpdateManyWithWhereWithoutSessionInput[]
+  deleteMany?: Prisma.AttemptScalarWhereInput | Prisma.AttemptScalarWhereInput[]
+}
+
+export type AttemptUncheckedUpdateManyWithoutSessionNestedInput = {
+  create?: Prisma.XOR<Prisma.AttemptCreateWithoutSessionInput, Prisma.AttemptUncheckedCreateWithoutSessionInput> | Prisma.AttemptCreateWithoutSessionInput[] | Prisma.AttemptUncheckedCreateWithoutSessionInput[]
+  connectOrCreate?: Prisma.AttemptCreateOrConnectWithoutSessionInput | Prisma.AttemptCreateOrConnectWithoutSessionInput[]
+  upsert?: Prisma.AttemptUpsertWithWhereUniqueWithoutSessionInput | Prisma.AttemptUpsertWithWhereUniqueWithoutSessionInput[]
+  createMany?: Prisma.AttemptCreateManySessionInputEnvelope
+  set?: Prisma.AttemptWhereUniqueInput | Prisma.AttemptWhereUniqueInput[]
+  disconnect?: Prisma.AttemptWhereUniqueInput | Prisma.AttemptWhereUniqueInput[]
+  delete?: Prisma.AttemptWhereUniqueInput | Prisma.AttemptWhereUniqueInput[]
+  connect?: Prisma.AttemptWhereUniqueInput | Prisma.AttemptWhereUniqueInput[]
+  update?: Prisma.AttemptUpdateWithWhereUniqueWithoutSessionInput | Prisma.AttemptUpdateWithWhereUniqueWithoutSessionInput[]
+  updateMany?: Prisma.AttemptUpdateManyWithWhereWithoutSessionInput | Prisma.AttemptUpdateManyWithWhereWithoutSessionInput[]
+  deleteMany?: Prisma.AttemptScalarWhereInput | Prisma.AttemptScalarWhereInput[]
 }
 
 export type StringFieldUpdateOperationsInput = {
@@ -476,10 +558,130 @@ export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
 
+export type AttemptCreateWithoutSessionInput = {
+  lift_type: string
+  attempt_number: number
+  weight: number
+  left_judge?: boolean
+  center_judge?: boolean
+  right_judge?: boolean
+  result?: boolean
+  platform_pr?: boolean
+  all_time_pr?: boolean
+}
+
+export type AttemptUncheckedCreateWithoutSessionInput = {
+  id?: number
+  lift_type: string
+  attempt_number: number
+  weight: number
+  left_judge?: boolean
+  center_judge?: boolean
+  right_judge?: boolean
+  result?: boolean
+  platform_pr?: boolean
+  all_time_pr?: boolean
+}
+
+export type AttemptCreateOrConnectWithoutSessionInput = {
+  where: Prisma.AttemptWhereUniqueInput
+  create: Prisma.XOR<Prisma.AttemptCreateWithoutSessionInput, Prisma.AttemptUncheckedCreateWithoutSessionInput>
+}
+
+export type AttemptCreateManySessionInputEnvelope = {
+  data: Prisma.AttemptCreateManySessionInput | Prisma.AttemptCreateManySessionInput[]
+  skipDuplicates?: boolean
+}
+
+export type AttemptUpsertWithWhereUniqueWithoutSessionInput = {
+  where: Prisma.AttemptWhereUniqueInput
+  update: Prisma.XOR<Prisma.AttemptUpdateWithoutSessionInput, Prisma.AttemptUncheckedUpdateWithoutSessionInput>
+  create: Prisma.XOR<Prisma.AttemptCreateWithoutSessionInput, Prisma.AttemptUncheckedCreateWithoutSessionInput>
+}
+
+export type AttemptUpdateWithWhereUniqueWithoutSessionInput = {
+  where: Prisma.AttemptWhereUniqueInput
+  data: Prisma.XOR<Prisma.AttemptUpdateWithoutSessionInput, Prisma.AttemptUncheckedUpdateWithoutSessionInput>
+}
+
+export type AttemptUpdateManyWithWhereWithoutSessionInput = {
+  where: Prisma.AttemptScalarWhereInput
+  data: Prisma.XOR<Prisma.AttemptUpdateManyMutationInput, Prisma.AttemptUncheckedUpdateManyWithoutSessionInput>
+}
+
+export type AttemptScalarWhereInput = {
+  AND?: Prisma.AttemptScalarWhereInput | Prisma.AttemptScalarWhereInput[]
+  OR?: Prisma.AttemptScalarWhereInput[]
+  NOT?: Prisma.AttemptScalarWhereInput | Prisma.AttemptScalarWhereInput[]
+  id?: Prisma.IntFilter<"Attempt"> | number
+  sessionId?: Prisma.IntFilter<"Attempt"> | number
+  lift_type?: Prisma.StringFilter<"Attempt"> | string
+  attempt_number?: Prisma.IntFilter<"Attempt"> | number
+  weight?: Prisma.IntFilter<"Attempt"> | number
+  left_judge?: Prisma.BoolFilter<"Attempt"> | boolean
+  center_judge?: Prisma.BoolFilter<"Attempt"> | boolean
+  right_judge?: Prisma.BoolFilter<"Attempt"> | boolean
+  result?: Prisma.BoolFilter<"Attempt"> | boolean
+  platform_pr?: Prisma.BoolFilter<"Attempt"> | boolean
+  all_time_pr?: Prisma.BoolFilter<"Attempt"> | boolean
+}
+
+export type AttemptCreateManySessionInput = {
+  id?: number
+  lift_type: string
+  attempt_number: number
+  weight: number
+  left_judge?: boolean
+  center_judge?: boolean
+  right_judge?: boolean
+  result?: boolean
+  platform_pr?: boolean
+  all_time_pr?: boolean
+}
+
+export type AttemptUpdateWithoutSessionInput = {
+  lift_type?: Prisma.StringFieldUpdateOperationsInput | string
+  attempt_number?: Prisma.IntFieldUpdateOperationsInput | number
+  weight?: Prisma.IntFieldUpdateOperationsInput | number
+  left_judge?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  center_judge?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  right_judge?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  result?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  platform_pr?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  all_time_pr?: Prisma.BoolFieldUpdateOperationsInput | boolean
+}
+
+export type AttemptUncheckedUpdateWithoutSessionInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  lift_type?: Prisma.StringFieldUpdateOperationsInput | string
+  attempt_number?: Prisma.IntFieldUpdateOperationsInput | number
+  weight?: Prisma.IntFieldUpdateOperationsInput | number
+  left_judge?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  center_judge?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  right_judge?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  result?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  platform_pr?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  all_time_pr?: Prisma.BoolFieldUpdateOperationsInput | boolean
+}
+
+export type AttemptUncheckedUpdateManyWithoutSessionInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  lift_type?: Prisma.StringFieldUpdateOperationsInput | string
+  attempt_number?: Prisma.IntFieldUpdateOperationsInput | number
+  weight?: Prisma.IntFieldUpdateOperationsInput | number
+  left_judge?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  center_judge?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  right_judge?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  result?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  platform_pr?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  all_time_pr?: Prisma.BoolFieldUpdateOperationsInput | boolean
+}
+
 
 
 export type AttemptSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  sessionId?: boolean
   lift_type?: boolean
   attempt_number?: boolean
   weight?: boolean
@@ -489,10 +691,12 @@ export type AttemptSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   result?: boolean
   platform_pr?: boolean
   all_time_pr?: boolean
+  session?: boolean | Prisma.SessionDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["attempt"]>
 
 export type AttemptSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  sessionId?: boolean
   lift_type?: boolean
   attempt_number?: boolean
   weight?: boolean
@@ -502,10 +706,12 @@ export type AttemptSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   result?: boolean
   platform_pr?: boolean
   all_time_pr?: boolean
+  session?: boolean | Prisma.SessionDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["attempt"]>
 
 export type AttemptSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  sessionId?: boolean
   lift_type?: boolean
   attempt_number?: boolean
   weight?: boolean
@@ -515,10 +721,12 @@ export type AttemptSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   result?: boolean
   platform_pr?: boolean
   all_time_pr?: boolean
+  session?: boolean | Prisma.SessionDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["attempt"]>
 
 export type AttemptSelectScalar = {
   id?: boolean
+  sessionId?: boolean
   lift_type?: boolean
   attempt_number?: boolean
   weight?: boolean
@@ -530,13 +738,25 @@ export type AttemptSelectScalar = {
   all_time_pr?: boolean
 }
 
-export type AttemptOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "lift_type" | "attempt_number" | "weight" | "left_judge" | "center_judge" | "right_judge" | "result" | "platform_pr" | "all_time_pr", ExtArgs["result"]["attempt"]>
+export type AttemptOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "sessionId" | "lift_type" | "attempt_number" | "weight" | "left_judge" | "center_judge" | "right_judge" | "result" | "platform_pr" | "all_time_pr", ExtArgs["result"]["attempt"]>
+export type AttemptInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  session?: boolean | Prisma.SessionDefaultArgs<ExtArgs>
+}
+export type AttemptIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  session?: boolean | Prisma.SessionDefaultArgs<ExtArgs>
+}
+export type AttemptIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  session?: boolean | Prisma.SessionDefaultArgs<ExtArgs>
+}
 
 export type $AttemptPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Attempt"
-  objects: {}
+  objects: {
+    session: Prisma.$SessionPayload<ExtArgs>
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
+    sessionId: number
     lift_type: string
     attempt_number: number
     weight: number
@@ -940,6 +1160,7 @@ readonly fields: AttemptFieldRefs;
  */
 export interface Prisma__AttemptClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  session<T extends Prisma.SessionDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.SessionDefaultArgs<ExtArgs>>): Prisma.Prisma__SessionClient<runtime.Types.Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -970,6 +1191,7 @@ export interface Prisma__AttemptClient<T, Null = never, ExtArgs extends runtime.
  */
 export interface AttemptFieldRefs {
   readonly id: Prisma.FieldRef<"Attempt", 'Int'>
+  readonly sessionId: Prisma.FieldRef<"Attempt", 'Int'>
   readonly lift_type: Prisma.FieldRef<"Attempt", 'String'>
   readonly attempt_number: Prisma.FieldRef<"Attempt", 'Int'>
   readonly weight: Prisma.FieldRef<"Attempt", 'Int'>
@@ -996,6 +1218,10 @@ export type AttemptFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Inter
    */
   omit?: Prisma.AttemptOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AttemptInclude<ExtArgs> | null
+  /**
    * Filter, which Attempt to fetch.
    */
   where: Prisma.AttemptWhereUniqueInput
@@ -1014,6 +1240,10 @@ export type AttemptFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extension
    */
   omit?: Prisma.AttemptOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AttemptInclude<ExtArgs> | null
+  /**
    * Filter, which Attempt to fetch.
    */
   where: Prisma.AttemptWhereUniqueInput
@@ -1031,6 +1261,10 @@ export type AttemptFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Omit specific fields from the Attempt
    */
   omit?: Prisma.AttemptOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AttemptInclude<ExtArgs> | null
   /**
    * Filter, which Attempt to fetch.
    */
@@ -1080,6 +1314,10 @@ export type AttemptFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions
    */
   omit?: Prisma.AttemptOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AttemptInclude<ExtArgs> | null
+  /**
    * Filter, which Attempt to fetch.
    */
   where?: Prisma.AttemptWhereInput
@@ -1127,6 +1365,10 @@ export type AttemptFindManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the Attempt
    */
   omit?: Prisma.AttemptOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AttemptInclude<ExtArgs> | null
   /**
    * Filter, which Attempts to fetch.
    */
@@ -1176,6 +1418,10 @@ export type AttemptCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    */
   omit?: Prisma.AttemptOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AttemptInclude<ExtArgs> | null
+  /**
    * The data needed to create a Attempt.
    */
   data: Prisma.XOR<Prisma.AttemptCreateInput, Prisma.AttemptUncheckedCreateInput>
@@ -1209,6 +1455,10 @@ export type AttemptCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    */
   data: Prisma.AttemptCreateManyInput | Prisma.AttemptCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AttemptIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1223,6 +1473,10 @@ export type AttemptUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the Attempt
    */
   omit?: Prisma.AttemptOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AttemptInclude<ExtArgs> | null
   /**
    * The data needed to update a Attempt.
    */
@@ -1275,6 +1529,10 @@ export type AttemptUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    * Limit how many Attempts to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AttemptIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1289,6 +1547,10 @@ export type AttemptUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the Attempt
    */
   omit?: Prisma.AttemptOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AttemptInclude<ExtArgs> | null
   /**
    * The filter to search for the Attempt to update in case it exists.
    */
@@ -1315,6 +1577,10 @@ export type AttemptDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the Attempt
    */
   omit?: Prisma.AttemptOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AttemptInclude<ExtArgs> | null
   /**
    * Filter which Attempt to delete.
    */
@@ -1347,4 +1613,8 @@ export type AttemptDefaultArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the Attempt
    */
   omit?: Prisma.AttemptOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AttemptInclude<ExtArgs> | null
 }

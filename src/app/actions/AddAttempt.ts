@@ -13,13 +13,14 @@ export async function addAttempt(
   formData: FormData,
 ) {
   const parsed = AttemptEntrySchema.safeParse({
+    sessionId: formData.get("sessionId"),
     lift_type: formData.get("lift_type"),
     attempt_number: formData.get("attempt_number"),
     weight: formData.get("weight"),
     left_judge: formData.get("left_judge"),
     center_judge: formData.get("center_judge"),
     right_judge: formData.get("right_judge"),
-    // result: calcResult,
+
     platform_pr: formData.get("platform_pr"),
     all_time_pr: formData.get("all_time_pr"),
   });
@@ -65,6 +66,9 @@ export async function addAttempt(
       ),
       platform_pr: parsed.data.platform_pr,
       all_time_pr: parsed.data.all_time_pr,
+      session: {
+        connect: { id: parsed.data.sessionId },
+      },
     },
   });
   return {

@@ -49,26 +49,22 @@ datasource db {
 // }
 
 model Session {
-  id           Int     @id @default(autoincrement())
+  id           Int       @id @default(autoincrement())
   bodyweight   Int?
-  weight_class String?
-  division     String?
   coefficient  String?
-  bestSquat    Int
-  bestBench    Int
-  bestDeadlift Int
-  total        Int
-  wilks_score  Int?
-  dots_score   Int?
-  placement    Int?
-  meet_entry   Int
-  // attempt      Attempt[]
+  bestSquat    Int       @default(0)
+  bestBench    Int       @default(0)
+  bestDeadlift Int       @default(0)
+  total        Int       @default(0)
+  wilks_score  Int?      @default(0)
+  dots_score   Int?      @default(0)
+  attempt      Attempt[]
 }
 
 model Attempt {
   id             Int     @id @default(autoincrement())
-  // session        Session @relation(fields: [sessionId], references: [id])
-  // sessionId      Int
+  session        Session @relation(fields: [sessionId], references: [id])
+  sessionId      Int
   lift_type      String
   attempt_number Int
   weight         Int

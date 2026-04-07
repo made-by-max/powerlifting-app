@@ -595,17 +595,13 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const SessionScalarFieldEnum = {
   id: 'id',
   bodyweight: 'bodyweight',
-  weight_class: 'weight_class',
-  division: 'division',
   coefficient: 'coefficient',
   bestSquat: 'bestSquat',
   bestBench: 'bestBench',
   bestDeadlift: 'bestDeadlift',
   total: 'total',
   wilks_score: 'wilks_score',
-  dots_score: 'dots_score',
-  placement: 'placement',
-  meet_entry: 'meet_entry'
+  dots_score: 'dots_score'
 } as const
 
 export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
@@ -613,6 +609,7 @@ export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeo
 
 export const AttemptScalarFieldEnum = {
   id: 'id',
+  sessionId: 'sessionId',
   lift_type: 'lift_type',
   attempt_number: 'attempt_number',
   weight: 'weight',

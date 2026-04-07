@@ -1,6 +1,7 @@
 import * as z from "zod";
 
 export const AttemptEntrySchema = z.object({
+  sessionId: z.coerce.number(),
   lift_type: z
     .string()
     .min(2, "Must be at least 2 characters.")
