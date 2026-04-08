@@ -65,9 +65,9 @@ export function DotsEntryForm({ sessionId }: DotsEntryProps) {
       </CardContent>
       <CardFooter>
         <Field orientation="horizontal">
-          <Button type="button" variant="outline">
+          {/*<Button type="button" variant="outline">
             Reset
-          </Button>
+          </Button>*/}
 
           <Button type="submit" form="dots-entry-form" disabled={isPending}>
             {isPending ? "Submitting..." : "Submit"}

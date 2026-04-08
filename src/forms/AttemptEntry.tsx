@@ -20,6 +20,10 @@ import {
   FieldError,
   FieldGroup,
   FieldLabel,
+  FieldContent,
+  FieldTitle,
+  FieldLegend,
+  FieldSet,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import {
@@ -38,6 +42,8 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+
 import { Toggle } from "@/components/ui/toggle";
 import { DEFAULT_PRESET_CONFIG } from "shadcn/preset";
 import { Slabo_13px } from "next/font/google";
@@ -111,30 +117,6 @@ export function AttemptEntry({ sessionId }: AttemptEntryProps) {
           />
 
           <FieldGroup>
-            {/*<FieldLabel htmlFor="lift_type">Lift</FieldLabel>
-            <Select name="lift_type">
-              <SelectTrigger className="w-full max-w-48">
-                <SelectValue placeholder="" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="squat">Squat</SelectItem>
-                <SelectItem value="bench">Bench</SelectItem>
-                <SelectItem value="deadlift">Deadlift</SelectItem>
-              </SelectContent>
-            </Select>*/}
-
-            {/*<FieldLabel htmlFor="attempt_number">Attempt Number</FieldLabel>
-            <Input
-              id="attempt_number"
-              name="attempt_number"
-              type="number"
-              min={1}
-              max={3}
-              placeholder=""
-              required
-              autoComplete="off"
-            />*/}
-
             <FieldLabel htmlFor="weight">Weight</FieldLabel>
             <Input
               id="weight"
@@ -144,6 +126,94 @@ export function AttemptEntry({ sessionId }: AttemptEntryProps) {
               required
               autoComplete="off"
             />
+
+            <div className="flex justify-around">
+              <FieldSet className="w-11 max-w-xs">
+                <RadioGroup name="left_judge">
+                  <Field>
+                    <RadioGroupItem
+                      value="false"
+                      id="left_judge_fail"
+                      className="sr-only"
+                    />
+                    <FieldLabel
+                      htmlFor="left_judge_fail"
+                      className="border w-11 h-11  bg-red-500 rounded-full cursor-pointer hover:bg-red-600 peer-data-[state=checked]:border-primary  peer-data-[state=checked]:bg-red-600"
+                    ></FieldLabel>
+                  </Field>
+
+                  <Field>
+                    <RadioGroupItem
+                      value="true"
+                      id="left_judge_pass"
+                      className="sr-only"
+                    />
+                    <FieldLabel
+                      htmlFor="left_judge_pass"
+                      className="border w-11 h-11  bg-white rounded-full cursor-pointer hover:bg-stone-50 peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-stone-50"
+                    ></FieldLabel>
+                  </Field>
+                </RadioGroup>
+              </FieldSet>
+
+              <FieldSet className="w-11 max-w-xs">
+                <RadioGroup name="center_judge">
+                  <Field>
+                    <RadioGroupItem
+                      value="false"
+                      id="center_judge_fail"
+                      className="sr-only"
+                    />
+                    <FieldLabel
+                      htmlFor="center_judge_fail"
+                      className="border w-11 h-11  bg-red-500 rounded-full cursor-pointer hover:bg-red-600 peer-data-[state=checked]:border-primary  peer-data-[state=checked]:bg-red-600"
+                    ></FieldLabel>
+                  </Field>
+
+                  <Field>
+                    <RadioGroupItem
+                      value="true"
+                      id="center_judge_pass"
+                      className="sr-only"
+                    />
+                    <FieldLabel
+                      htmlFor="center_judge_pass"
+                      className="border w-11 h-11  bg-white rounded-full cursor-pointer hover:bg-stone-50 peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-stone-50"
+                    ></FieldLabel>
+                  </Field>
+                </RadioGroup>
+              </FieldSet>
+
+              <FieldSet className="w-11 max-w-xs">
+                <RadioGroup name="right_judge">
+                  <Field>
+                    <RadioGroupItem
+                      value="false"
+                      id="right_judge_fail"
+                      className="sr-only"
+                    />
+                    <FieldLabel
+                      htmlFor="right_judge_fail"
+                      className="border w-11 h-11  bg-red-500 rounded-full cursor-pointer hover:bg-red-600 peer-data-[state=checked]:border-primary  peer-data-[state=checked]:bg-red-600"
+                    ></FieldLabel>
+                  </Field>
+
+                  <Field>
+                    <RadioGroupItem
+                      value="true"
+                      id="right_judge_pass"
+                      className="sr-only"
+                    />
+                    <FieldLabel
+                      htmlFor="right_judge_pass"
+                      className="border w-11 h-11  bg-white rounded-full cursor-pointer hover:bg-stone-50 peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-stone-50"
+                    ></FieldLabel>
+                  </Field>
+                </RadioGroup>
+              </FieldSet>
+            </div>
+
+            {/*
 
             <FieldLabel htmlFor="left_judge">Left Judge</FieldLabel>
             <Select name="left_judge">
@@ -176,17 +246,6 @@ export function AttemptEntry({ sessionId }: AttemptEntryProps) {
                 <SelectItem value="false">Red</SelectItem>
                 <SelectItem value="true">White</SelectItem>
               </SelectContent>
-            </Select>
-
-            {/*<FieldLabel htmlFor="result">Result</FieldLabel>
-            <Select name="result">
-              <SelectTrigger className="w-full max-w-48">
-                <SelectValue placeholder="" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="false">Fail</SelectItem>
-                <SelectItem value="true">Pass</SelectItem>
-              </SelectContent>
             </Select>*/}
 
             <Field orientation="horizontal">
@@ -204,11 +263,11 @@ export function AttemptEntry({ sessionId }: AttemptEntryProps) {
 
       <CardFooter>
         <Field orientation="horizontal">
-          <Button type="button" variant="outline">
+          {/*<Button type="button" variant="outline">
             Reset
-          </Button>
+          </Button>*/}
 
-          {formKey <= 9 ? (
+          {formKey < 9 ? (
             <Button type="submit" form="new-attempt-form" disabled={isPending}>
               {isPending ? "Submitting..." : "Submit"}
             </Button>

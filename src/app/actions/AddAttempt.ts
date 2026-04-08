@@ -73,6 +73,6 @@ export async function addAttempt(
   });
   return {
     success: true,
-    message: `Attempt created! Lift successful: ${attempt.result}`,
+    message: `Attempt created!`,
   };
 }
