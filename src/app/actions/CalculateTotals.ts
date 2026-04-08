@@ -6,12 +6,12 @@ import { revalidatePath } from "next/cache";
 
 import { bestSquat, bestBench, bestDeadlift } from "@/app/utils/Calculations";
 
-const bestSquatNumber: number = await bestSquat();
-const bestBenchNumber: number = await bestBench();
-const bestDeadliftNumber: number = await bestDeadlift();
-const total: number = bestSquatNumber + bestBenchNumber + bestDeadliftNumber;
-
 export async function CalculateTotals(sessionId: number) {
+  const bestSquatNumber: number = await bestSquat(sessionId);
+  const bestBenchNumber: number = await bestBench(sessionId);
+  const bestDeadliftNumber: number = await bestDeadlift(sessionId);
+  const total: number = bestSquatNumber + bestBenchNumber + bestDeadliftNumber;
+
   const session = await prisma.session.update({
     where: {
       id: sessionId,

@@ -1,10 +1,10 @@
 "use server";
 import { prisma } from "@/lib/prisma";
 
-export async function bestSquat() {
+export async function bestSquat(sessionId: number) {
   const squats = await prisma.attempt.findMany({
     where: {
-      sessionId: 8,
+      sessionId: sessionId,
       lift_type: "squat",
       result: true,
     },
@@ -12,10 +12,10 @@ export async function bestSquat() {
   return Math.max(...squats.map((s) => s.weight));
 }
 
-export async function bestBench() {
+export async function bestBench(sessionId: number) {
   const benches = await prisma.attempt.findMany({
     where: {
-      sessionId: 8,
+      sessionId: sessionId,
       lift_type: "bench",
       result: true,
     },
@@ -23,10 +23,10 @@ export async function bestBench() {
   return Math.max(...benches.map((b) => b.weight));
 }
 
-export async function bestDeadlift() {
+export async function bestDeadlift(sessionId: number) {
   const deadlifts = await prisma.attempt.findMany({
     where: {
-      sessionId: 8,
+      sessionId: sessionId,
       lift_type: "deadlift",
       result: true,
     },
