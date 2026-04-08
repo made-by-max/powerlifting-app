@@ -10,11 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Field,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field";
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -77,13 +73,14 @@ export function DotsEntryForm({ sessionId }: DotsEntryProps) {
             {isPending ? "Submitting..." : "Submit"}
           </Button>
 
-          {state.message && (
+          {/*{state.message && (
             <p
               className={`form-message ${state.success ? "success" : "error"}`}
             >
               {state.message}
+              {state.dotScore}
             </p>
-          )}
+          )}*/}
         </Field>
       </CardFooter>
     </Card>

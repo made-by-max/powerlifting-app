@@ -1,6 +1,7 @@
 "use server";
-
 import { prisma } from "@/lib/prisma";
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 import { DotsSchema, DotsState } from "@/app/schemas/DotsSchema";
 
@@ -104,9 +105,7 @@ export async function calculateDots(
       dots_score: dotScore,
     },
   });
-  return {
-    success: true,
-    message: `Attempt created!`,
-    dotScore: dotScore,
-  };
+
+  revalidatePath(`/session/${sessionId}/results`);
+  redirect(`/session/${sessionId}/results`);
 }
