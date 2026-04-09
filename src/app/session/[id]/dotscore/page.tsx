@@ -1,4 +1,4 @@
-import { DotsEntryForm } from "@/forms/DotsEntryForm";
+import { DotsEntryForm } from "@/app/forms/DotsEntryForm";
 
 // import { NewMeetForm } from "@/forms/NewMeetForm";
 

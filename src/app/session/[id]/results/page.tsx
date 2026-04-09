@@ -1,4 +1,4 @@
-import { ResultsView } from "@/forms/Results";
+import { ResultsView } from "@/app/forms/Results";
 
 type PageProps = {
   params: Promise<{ id: string }>;

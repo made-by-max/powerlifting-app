@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 // import { NewUserForm } from "@/forms/NewUserForm";
-import { CreateSessionButton } from "@/forms/CreateSessionButton";
+import { CreateSessionButton } from "@/app/forms/CreateSessionButton";
 // import { NewMeetForm } from "@/forms/NewMeetForm";
 
 export default function Home() {
